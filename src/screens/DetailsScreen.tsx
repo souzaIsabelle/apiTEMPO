@@ -18,9 +18,11 @@ const DetailScreen: React.FC<Props> = ({ route }) => {
             <Text style={styles.temp}>{weather.current.temp_c}°C</Text>
             <Text style={styles.condition}>{weather.current.condition.text}</Text>
             <Image source={{ uri: `https:${weather.current.condition.icon}` }} style={styles.icon} />
-            <Text style={styles.details}>Vento: {weather.current.wind_kph} kph</Text>
-            <Text style={styles.details}>Humidade: {weather.current.humidity}%</Text>
-            <Text style={styles.details}>Sensação Térmica: {weather.current.feelslike_c}°C</Text>
+            <View style={styles.detailsContainer}>
+                <Text style={styles.details}>Vento: {weather.current.wind_kph} kph</Text>
+                <Text style={styles.details}>Humidade: {weather.current.humidity}%</Text>
+                <Text style={styles.details}>Sensação Térmica: {weather.current.feelslike_c}°C</Text>
+            </View>
         </View>
     );
 };
@@ -29,26 +31,48 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 20,
-        backgroundColor: '#fff',
+        backgroundColor: '#f0f8ff',
+        alignItems: 'center',
     },
     city: {
-        fontSize: 24,
+        fontSize: 32,
         fontWeight: 'bold',
+        color: '#333',
+        marginBottom: 10,
     },
     temp: {
-        fontSize: 22,
+        fontSize: 28,
+        color: '#ff4500',
+        marginBottom: 5,
     },
     condition: {
-        fontSize: 18,
+        fontSize: 20,
         color: '#555',
+        marginBottom: 20,
     },
     icon: {
-        width: 50,
-        height: 50,
+        width: 100,
+        height: 100,
+        marginBottom: 20,
+    },
+    detailsContainer: {
+        backgroundColor: '#fff',
+        padding: 20,
+        borderRadius: 10,
+        width: '100%',
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
     },
     details: {
-        fontSize: 16,
-        marginTop: 10,
+        fontSize: 18,
+        color: '#333',
+        marginVertical: 5,
     },
 });
 
